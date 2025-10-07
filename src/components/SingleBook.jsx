@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Card } from 'react-bootstrap';
 
 export default function SingleBook({ book, selected = false, onSelect }) {
-  if (!book) return null;
+  const [selectedAsin, setSelectedAsin] = useState(null);
 
   const handleClick = () => {
-    // send the asin up to BookList
-    onSelect?.(book.asin);
+    const next = selectedAsin === book.asin ? null : book.asin;
+    setSelectedAsin(next);
+    onSelect?.(next); 
   };
+
+  if (!book) return null;
 
   return (
     <Card
