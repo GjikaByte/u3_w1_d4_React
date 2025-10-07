@@ -42,7 +42,6 @@ export default function CommentArea({ asin }) {
 
   return (
     <div className="mt-3">
-      <h6 className="mb-2">Commenti</h6>
 
       {isLoading && (
         <div className="ml-2 mb-2">
@@ -54,9 +53,13 @@ export default function CommentArea({ asin }) {
 
       {!isLoading && !errMsg && (
         <>
-          <CommentsList comments={comments} />
-          {/* key=asin così il form si resetta quando cambi libro */}
-          <AddComment key={asin} asin={asin} onCreated={handleCreated} />
+          <div className='position-sticky'>
+            <h6 className="mb-2">Commenti</h6>
+            <CommentsList comments={comments} />
+            {/* key=asin così il form si resetta quando cambi libro */}
+            <AddComment key={asin} asin={asin} onCreated={handleCreated} />
+          </div>
+
         </>
       )}
     </div>
