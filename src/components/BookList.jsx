@@ -5,20 +5,18 @@ import CommentArea from './CommentArea.jsx';
 
 export default function BookList({ books = [] }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedAsin, setSelectedAsin] = useState(null); // <- store asin here
-
+  const [selectedAsin, setSelectedAsin] = useState(null); 
   const filtered = books.filter(b =>
     (b.title || '').toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleSelect = (asin) => {
-    // click again to unselect
     setSelectedAsin((prev) => (prev === asin ? null : asin));
   };
 
   return (
     <>
-      {/* Search */}
+
       <Row className="justify-content-center mt-5">
         <Col xs={12} md={6}>
           <Form.Group>
@@ -32,7 +30,6 @@ export default function BookList({ books = [] }) {
         </Col>
       </Row>
 
-      {/* Two columns: left comments, right grid */}
       <Row className="mt-3">
 
         <Col xs={12} md={8}>

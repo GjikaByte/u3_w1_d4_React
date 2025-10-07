@@ -56,7 +56,6 @@ export default function CommentArea({ asin }) {
           <div className='position-sticky'>
             <h6 className="mb-2">Commenti</h6>
             <CommentsList comments={comments} />
-            {/* key=asin così il form si resetta quando cambi libro */}
             <AddComment key={asin} asin={asin} onCreated={handleCreated} />
           </div>
 
