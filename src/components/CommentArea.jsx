@@ -52,14 +52,11 @@ export default function CommentArea({ asin }) {
       {errMsg && <Alert variant="warning">Cannot load the data: {errMsg}</Alert>}
 
       {!isLoading && !errMsg && (
-        <>
           <div className='position-sticky'>
             <h6 className="mb-2">Commenti</h6>
             <CommentsList comments={comments} />
             <AddComment key={asin} asin={asin} onCreated={handleCreated} />
           </div>
-
-        </>
       )}
     </div>
   );

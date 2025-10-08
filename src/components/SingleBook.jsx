@@ -10,7 +10,6 @@ export default function SingleBook({ book, selected = false, onSelect }) {
     onSelect?.(next); 
   };
 
-  if (!book) return null;
 
   return (
     <Card
