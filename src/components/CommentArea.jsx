@@ -37,27 +37,41 @@ export default function CommentArea({ asin }) {
     fetchComments(asin);
   }, [asin, fetchComments]);
 
-  // chiamato da AddComment dopo una POST andata a buon fine
   const handleCreated = () => fetchComments(asin);
 
   return (
     <div className="mt-3">
+      {/* sticky wrapper so the panel stays in view while scrolling the page */}
+      <div className="position-sticky" style={{ top: '4rem' }}>
+        <h6 className="mb-2">Commenti</h6>
 
-      {isLoading && (
-        <div className="ml-2 mb-2">
-          <Spinner animation="border" size="sm" /> Caricamento commenti…
-        </div>
-      )}
-
-      {errMsg && <Alert variant="warning">Cannot load the data: {errMsg}</Alert>}
-
-      {!isLoading && !errMsg && (
-          <div className='position-sticky'>
-            <h6 className="mb-2">Commenti</h6>
-            <CommentsList comments={comments} />
-            <AddComment key={asin} asin={asin} onCreated={handleCreated} />
+        {isLoading && (
+          <div className="ml-2 mb-2">
+            <Spinner animation="border" size="sm" /> Caricamento commenti…
           </div>
-      )}
+        )}
+
+        {errMsg && <Alert variant="warning">Cannot load the data: {errMsg}</Alert>}
+
+        {!isLoading && !errMsg && (
+          <>
+            {/* scrollable list area */}
+            <div
+              style={{
+                maxHeight: '60vh',         // adjust to your layout
+                overflowY: 'auto',
+                paddingRight: '.25rem',    // a bit of space for scrollbar
+                overscrollBehavior: 'contain',
+              }}
+            >
+              <CommentsList comments={comments} />
+            </div>
+
+            {/* form stays visible below the list */}
+            <AddComment key={asin} asin={asin} onCreated={handleCreated} />
+          </>
+        )}
+      </div>
     </div>
   );
 }

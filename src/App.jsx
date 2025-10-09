@@ -6,7 +6,6 @@ import Welcome from './components/Welcome'
 // import AllTheBooks from './components/AllTheBooks'
 import { Container } from 'react-bootstrap'
 import BookList from './components/BookList'
-import Componentfn from './components/componentfn'
 
 import fantasy from './data/fantasy.json'
 import { Component } from 'react'
@@ -15,7 +14,6 @@ function App() {
 
   return (
     <>
-      <Componentfn/>
       <MyNav />
       <Container>
         <Welcome />
